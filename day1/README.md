@@ -63,12 +63,12 @@ var removeDuplicates = function(nums) {
   return nums.length
 };
 
-2）优化，改为while循环
+2）优化，改为while循环 // 112ms
 var removeDuplicates = function(nums) {
   //if (!nums || nums.length < 2) return nums
   let i = 0    
   while (i < nums.length) {
-      if (nums[i] == nums[i + 1]) {
+      if (nums[i] === nums[i + 1]) {
           nums.splice(i, 1)
           continue
       }
@@ -77,8 +77,23 @@ var removeDuplicates = function(nums) {
   return nums.length
 };
 
-3）优化，批量删除重复项(不能使用额外的空间)
+3）优化，批量删除重复项(不能使用额外的空间)，将不重复的数字往数组头部推
+需要两个指针，一个指针记录不重复数据的尾部，一个记录遍历数组位置的指针
+// 耗时76ms
 
-
+  var removeDuplicates = function(nums) { // nums = [1, 1, 2]
+    let i = 0, j = 1
+    while (j < nums.length){
+      if (nums[i] === nums[j]) { // 这里使用continue直接跳出而不实用else语句 耗时88 ms
+        j++
+      } else {
+        i++
+        nums[i] = nums[j]
+        j++
+      }
+    }
+    nums.splice(i + 1, nums.length - i - 1)
+    return i + 1
+  }
 
 ```
