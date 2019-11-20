@@ -55,10 +55,10 @@ for (int i = 0; i < len; i++) {
 var removeDuplicates = function(nums) {
   let i = 0    
   for (i; i < nums.length; i++) {
-      if (nums[i] === nums[i + 1]) {
-          nums.splice(i, 1)
-          i--
-      }
+    if (nums[i] === nums[i + 1]) {
+      nums.splice(i, 1)
+      i--
+    }
   }
   return nums.length
 };
@@ -68,11 +68,11 @@ var removeDuplicates = function(nums) {
   //if (!nums || nums.length < 2) return nums
   let i = 0    
   while (i < nums.length) {
-      if (nums[i] === nums[i + 1]) {
-          nums.splice(i, 1)
-          continue
-      }
-      i++
+    if (nums[i] === nums[i + 1]) {
+      nums.splice(i, 1)
+      continue
+    }
+    i++
   }
   return nums.length
 };
@@ -92,7 +92,7 @@ var removeDuplicates = function(nums) {
         j++
       }
     }
-    nums.splice(i + 1, nums.length - i - 1)
+    // nums.splice(i + 1, nums.length - i - 1)
     return i + 1
   }
 
@@ -101,12 +101,22 @@ var removeDuplicates = function(nums) {
       let i = 0, j = 1, l = nums.length
       while (j < l){
         if (nums[i] !== nums[j]) {
-          i++
-          nums[i] = nums[j]
+          nums[i++] = nums[j]
         }
         j++
       }
       return i + 1
   };
+
+  5)
+  const removeDuplicates = function(nums) {
+    let i = j = 0, l = nums.length
+    while (++j < l) {
+      if (nums[i] !== nums[j]) nums[++i] = nums[j]
+    }
+    // nums = nums.slice(0, i + 1)
+    // console.log(nums)
+    return i + 1
+  }
 
 ```
