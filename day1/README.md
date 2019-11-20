@@ -96,4 +96,17 @@ var removeDuplicates = function(nums) {
     return i + 1
   }
 
+  4) 68 ms 37.1M 
+    var removeDuplicates = function(nums) {
+      let i = 0, j = 1, l = nums.length
+      while (j < l){
+        if (nums[i] !== nums[j]) {
+          i++
+          nums[i] = nums[j]
+        }
+        j++
+      }
+      return i + 1
+  };
+
 ```
