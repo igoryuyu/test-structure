@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BinarySearchTree</title>
+</head>
+<body>
+  <h1>BinarySearchTree</h1>
+  <ul>
+    <li>创建二叉树</li>
+    <li>搜索二叉树</li>
+    <li>先序遍历</li>
+    <li>中序遍历</li>
+    <li>后序遍历</li>
+  </ul>
+  <script>
+    function BST() {
+      this.root = null
+      this.insert = insert
+      this.preOrder = preOrder
+      this.inOrder = inOrder
+      this.postOrder = postOrder
+    }
+    function Node(value, left, right) {
+      this.value = value
+      this.left = left
+      this.right = right
+      this.show = function () {
+        return this.value
+      }
+    }
+    function insert(value) {
+      let n = new Node(value, null, null)
+      if (this.root === null) {
+        this.root = n
+      } else {
+        let parent, current = this.root
+        while (true) {
+          parent = current
+          if (value < current.value) {
+            current = current.left
+            if (current === null) {
+              parent.left = n
+              break
+            }
+          } else {
+            current = current.right
+            if (current === null) {
+              current.right = n
+              break
+            }
+          }
+        }
+      }
+    }
+
+    let tree = new BST()
+    tree.insert(30)
+    tree.insert(2)
+    tree.insert(29)
+    tree.insert(12)
+  
+  </script>
+</body>
+</html>
